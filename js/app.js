@@ -62,7 +62,7 @@ const displayDetails = details =>{
     // acces integrations property from array
     const integrations = details.integrations;
 
-    const {description, image_link} = details;
+    const {description, image_link, accuracy} = details;
     const modalContainer = document.getElementById('load-modal')
     modalContainer.innerHTML = `
     <div class="modal-body row">
@@ -96,9 +96,10 @@ const displayDetails = details =>{
         </div>
         <div class="col-lg-6">
             <div class="card p-2">
-            <img src="${image_link[0]}" class="card-img-top" alt="...">
+                <img src="${image_link[0]}" class="card-img-top position-relative" alt="Images not found!!">
+                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy.score}% accuracy</h3>
             <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
             </div>
         </div>
