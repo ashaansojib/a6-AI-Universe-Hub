@@ -23,7 +23,7 @@ const displayCard = data => {
                 <ol>
                     <li>${features[0]}</li>
                     <li>${features[1]}</li>
-                    <li>${features[2]}</li>
+                    <li>${features[2] ? features[0] : 'Empty data found...!'}</li>
                 </ol>
                 </div>
                 <hr>
@@ -89,19 +89,19 @@ const displayDetails = details =>{
                 <div class="col-6">
                     <h3>Integrations</h3>
                     <li>${integrations[0]}</li>
-                    <li>${integrations[1]}</li>
-                    <li>${integrations[2]}</li>
+                    <li>${integrations[1] ? integrations[2] : 'Empty Data...!'}</li>
+                    <li>${integrations[2] ? integrations[0] : 'Empty Data...!'}</li>
                 </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="card p-2">
                 <img src="${image_link[0]}" class="card-img-top position-relative" alt="Images not found!!">
-                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy.score}% accuracy</h3>
+                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy.score ? accuracy.score : 'No Data'}% accuracy</h3>
                 <hr>
                 <div class="card-body text-center">
                     <h2>${input_output_examples[0].input}</h2>
-                    <p class="card-text">${input_output_examples[0].output}</p>
+                    <p class="card-text">${input_output_examples[0].output ? input_output_examples[0].output : 'No Not Yet, Take a Break'}</p>
                 </div>
             </div>
         </div>
