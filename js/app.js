@@ -53,7 +53,7 @@ const loadDetails = id =>{
 
 // display details on modal
 const displayDetails = details =>{
-    console.log(details.integrations)
+    console.log(details)
     // declare pricing
     const price = details.pricing;
 
@@ -62,13 +62,12 @@ const displayDetails = details =>{
     // acces integrations property from array
     const integrations = details.integrations;
 
-    const {tool_name, description} = details;
+    const {description, image_link} = details;
     const modalContainer = document.getElementById('load-modal')
     modalContainer.innerHTML = `
     <div class="modal-body row">
         <div class="col-lg-6">
-            <h2>${tool_name}</h2>
-            <p>${description}</p>
+            <h4>${description}</h4>
             <div class="row text-center">
                 <div class="col-4 text-success">
                     <p class="fw-bolder">${price[0].price} ${price[0].plan}</p>
@@ -95,8 +94,13 @@ const displayDetails = details =>{
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 bg-primary">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea magni mollitia voluptates nihil doloribus voluptatum, dolores, dolorum quia ipsum dolore porro accusantium minima iure. Tempore fugit dignissimos molestias quis inventore.</p>
+        <div class="col-lg-6">
+            <div class="card p-2">
+            <img src="${image_link[0]}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
+            </div>
         </div>
     </div>
     `;
