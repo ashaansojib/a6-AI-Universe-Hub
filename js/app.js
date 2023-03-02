@@ -80,16 +80,18 @@ const displayDetails = details =>{
                     <p class="fw-bolder">${price[2].price} ${price[2].plan}</p>
                 </div>
             </div>
-            <div>
-                <div>
+            <div class="row">
+                <div class="col-6">
                     <h3>Features</h3>
                     <li>${features["1"].feature_name}</li>
                     <li>${features["2"].feature_name}</li>
                     <li>${features["3"].feature_name}</li>
                 </div>
-                <div>
-                <h3>Integrations</h3>
-                <li>${integrations[0]}</li>
+                <div class="col-6">
+                    <h3>Integrations</h3>
+                    <li>${integrations[0]}</li>
+                    <li>${integrations[1]}</li>
+                    <li>${integrations[2]}</li>
                 </div>
             </div>
         </div>
