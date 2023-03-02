@@ -53,7 +53,7 @@ const loadDetails = id =>{
 
 // display details on modal
 const displayDetails = details =>{
-    console.log(details)
+    console.log(details.input_output_examples)
     // declare pricing
     const price = details.pricing;
 
@@ -62,7 +62,7 @@ const displayDetails = details =>{
     // acces integrations property from array
     const integrations = details.integrations;
 
-    const {description, image_link, accuracy} = details;
+    const {description, image_link, accuracy, input_output_examples} = details;
     const modalContainer = document.getElementById('load-modal')
     modalContainer.innerHTML = `
     <div class="modal-body row">
@@ -98,9 +98,11 @@ const displayDetails = details =>{
             <div class="card p-2">
                 <img src="${image_link[0]}" class="card-img-top position-relative" alt="Images not found!!">
                 <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy.score}% accuracy</h3>
-            <div class="card-body">
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+                <hr>
+                <div class="card-body text-center">
+                    <h2>${input_output_examples[0].input}</h2>
+                    <p class="card-text">${input_output_examples[0].output}</p>
+                </div>
             </div>
         </div>
     </div>
