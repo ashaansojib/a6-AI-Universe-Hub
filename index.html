@@ -7,6 +7,8 @@
     <title>The Universal AI</title>
     <!-- bootstrap css link -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- fontawesome cdn link -->
+    <script src="https://kit.fontawesome.com/07d34bf8e5.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <!-- header area -->
@@ -22,64 +24,55 @@
     </header>
     <!-- main content area -->
     <main>
-        <div class="container">
-            <div id="card-container" class="row">
-                <div class="col-lg-4 col-sm-12 col-md-6">
-                    <div class="card p-4">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">An item</li>
-                          <li class="list-group-item">A second item</li>
-                          <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Card link</a>
-                          <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-md-6">
-                    <div class="card p-4">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">An item</li>
-                          <li class="list-group-item">A second item</li>
-                          <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Card link</a>
-                          <a href="#" class="card-link">Another link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-sm-12 col-md-6">
-                    <div class="card p-4">
-                        <img src="..." class="card-img-top" alt="...">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                          <li class="list-group-item">An item</li>
-                          <li class="list-group-item">A second item</li>
-                          <li class="list-group-item">A third item</li>
-                        </ul>
-                        <div class="card-body">
-                          <a href="#" class="card-link">Card link</a>
-                          <a href="#" class="card-link">Another link</a>
+        <!-- this is card section -->
+        <section class="card-items">
+            <div class="container">
+                <div id="card-container" class="row">
+                    <div class="col-lg-4 col-sm-12 col-md-6">
+                        <div class="card p-4">
+                            <img src="..." class="card-img-top" alt="...">
+                            <div class="card-body">
+                              <h5 class="card-title">Card title</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">An item</li>
+                              <li class="list-group-item">A second item</li>
+                              <li class="list-group-item">A third item</li>
+                            </ul>
+                            <div class="card-body d-flex align-items-center justify-content-between">
+                                <div>
+                                    <a href="#" class="card-link">Card link</a>
+                                </div>
+                                <div>
+                                    <a href="#" class="card-link bg-primary text-white py-2 px-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
+        <!-- modal section -->
+        <section>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body row">
+                              <div class="col-lg-6 bg-warning">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea magni mollitia voluptates nihil doloribus voluptatum, dolores, dolorum quia ipsum dolore porro accusantium minima iure. Tempore fugit dignissimos molestias quis inventore.</p>
+                              </div>
+                              <div class="col-lg-6 bg-primary">
+                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea magni mollitia voluptates nihil doloribus voluptatum, dolores, dolorum quia ipsum dolore porro accusantium minima iure. Tempore fugit dignissimos molestias quis inventore.</p>
+                              </div>
+                          </div>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
     <!-- script tag link -->
     <script src="js/app.js"></script>
