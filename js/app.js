@@ -39,7 +39,7 @@ const displayCard = data => {
             </div>
         `;
         container.appendChild(newContainer);
-        
+        loadSpinner(false);
     });
 }
 
@@ -107,5 +107,15 @@ const displayDetails = details =>{
         </div>
     </div>
     `;
+}
+// create spinner function
+const loadSpinner = isLoading =>{
+    const spinnerContainer = document.getElementById("loader-area");
+    if(isLoading){
+        spinnerContainer.classList.remove('d-none');
+    }
+    else{
+        spinnerContainer.classList.add('d-none')
+    }
 }
 loadAllData()

@@ -10,7 +10,7 @@
     <!-- fontawesome cdn link -->
     <script src="https://kit.fontawesome.com/07d34bf8e5.js" crossorigin="anonymous"></script>
 </head>
-<body>
+<body onload="loadSpinner(true)">
     <!-- header area -->
     <header>
         <div class="container">
@@ -27,6 +27,11 @@
         <!-- this is card section -->
         <section class="card-items">
             <div class="container">
+                <div id="loader-area" class="d-none">
+                    <div style="height: 300px;" class="d-flex align-items-center text-success justify-content-center">
+                        <div class="spinner-border" role="status"></div>
+                    </div>
+                </div>
                 <div id="card-container" class="row gy-4">
                     <!-- here added card by js code -->
                 </div>
