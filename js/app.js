@@ -53,6 +53,50 @@ const loadDetails = id =>{
 
 // display details on modal
 const displayDetails = details =>{
-    console.log(details)
+    console.log(details.integrations)
+    // declare pricing
+    const price = details.pricing;
+
+    // access features property from objects
+    const features = details.features;
+    // acces integrations property from array
+    const integrations = details.integrations;
+
+    const {tool_name, description} = details;
+    const modalContainer = document.getElementById('load-modal')
+    modalContainer.innerHTML = `
+    <div class="modal-body row">
+        <div class="col-lg-6">
+            <h2>${tool_name}</h2>
+            <p>${description}</p>
+            <div class="row text-center">
+                <div class="col-4 text-success">
+                    <p class="fw-bolder">${price[0].price} ${price[0].plan}</p>
+                </div>
+                <div class="col-4 text-warning">
+                    <p class="fw-bolder">${price[1].price} ${price[1].plan}</p>
+                </div>
+                <div class="col-4 text-danger">
+                    <p class="fw-bolder">${price[2].price} ${price[2].plan}</p>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <h3>Features</h3>
+                    <li>${features["1"].feature_name}</li>
+                    <li>${features["2"].feature_name}</li>
+                    <li>${features["3"].feature_name}</li>
+                </div>
+                <div>
+                <h3>Integrations</h3>
+                <li>${integrations[0]}</li>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 bg-primary">
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea magni mollitia voluptates nihil doloribus voluptatum, dolores, dolorum quia ipsum dolore porro accusantium minima iure. Tempore fugit dignissimos molestias quis inventore.</p>
+        </div>
+    </div>
+    `;
 }
 loadAllData()
