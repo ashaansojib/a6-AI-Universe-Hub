@@ -134,7 +134,9 @@ const displayDetails = details =>{
     const featureList = Object.keys(features).map(key => `<li>${features[key].feature_name}</li>`).join('');
     // acces integrations property from array
     const integrations = details.integrations;
-    const integrationsList = integrations.map(integer => `<li>${integer}</li>`).join('');
+    // console.log(typeof integrations)
+    const integrationsList = Object.keys(integrations ?? {}).map(key => `<li>${integrations[key]}</li>`).join('');
+
     // modal details below
     const {description, image_link, accuracy, input_output_examples} = details;
     const modalContainer = document.getElementById('load-modal')
@@ -144,13 +146,13 @@ const displayDetails = details =>{
             <h4>${description}</h4>
             <div class="row text-center">
                 <div class="col-4 text-success">
-                    <p class="fw-bolder">${price[0].price} ${price[0].plan}</p>
+                    <p class="fw-bolder">${price[0].price ? price[0].price : 'Free Bundle'} ${price[0].plan}</p>
                 </div>
                 <div class="col-4 text-warning">
-                    <p class="fw-bolder">${price[1].price} ${price[1].plan}</p>
+                    <p class="fw-bolder">${price[1].price ? price[1].price : 'Free Bundle'} ${price[1].plan}</p>
                 </div>
                 <div class="col-4 text-danger">
-                    <p class="fw-bolder">${price[2].price} ${price[2].plan}</p>
+                    <p class="fw-bolder">${price[2].price ? price[2].price : 'Free Bundle'} ${price[2].plan}</p>
                 </div>
             </div>
             <div class="row">
