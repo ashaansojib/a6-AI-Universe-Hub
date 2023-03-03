@@ -1,16 +1,24 @@
 // load all data by api link
-const loadAllData = () =>{
+const loadAllData = dataLimit =>{
     const url = `https://openapi.programming-hero.com/api/ai/tools`
     fetch(url)
     .then(res => res.json())
-    .then(data => displayCard(data.data))
+    .then(data => displayCard(data.data, dataLimit))
 }
 // display api data with content card
-const displayCard = data => {
+const displayCard = (data, dataLimit) => {
     // console.log(data.tools)
     const container = document.getElementById("card-container");
-    data.tools.forEach(singleTool => {
-        // console.log(singleTool)
+    container.textContent = '';
+    let tool = data.tools;
+
+    if(dataLimit && tool.length > 6){
+        tool = tool.slice(0, 6);
+    }
+    else{
+        document.getElementById("show-btn").classList.add('d-none')
+    }
+    tool.forEach(singleTool => {
         const features = singleTool.features;
         // console.log(features)
         const newContainer = document.createElement("div");
@@ -53,7 +61,6 @@ const loadDetails = id =>{
 
 // display details on modal
 const displayDetails = details =>{
-    console.log(details.input_output_examples)
     // declare pricing
     const price = details.pricing;
 
@@ -118,4 +125,8 @@ const loadSpinner = isLoading =>{
         spinnerContainer.classList.add('d-none')
     }
 }
-loadAllData()
+
+document.getElementById('showBtn').addEventListener('click', function(){
+    loadAllData();
+});
+loadAllData(6)
