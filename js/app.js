@@ -7,7 +7,8 @@ const loadAllData = dataLimit =>{
 }
 // display api data with content card
 const displayCard = (data, dataLimit) => {
-    
+        //get features data by loop
+
     const container = document.getElementById("card-container");
     container.textContent = '';
     let tool = data.tools;
@@ -53,7 +54,7 @@ const displayCard = (data, dataLimit) => {
                                 <p><i class="fa-solid fa-calendar-days"></i>${item.published_in}</p>
                             </div>
                             <div>
-                                <a href="#" onclick="loadDetails(${item.id})" class="card-link bg-primary text-white py-2 px-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                                <a href="#" class="card-link bg-primary text-white py-2 px-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -82,9 +83,11 @@ const displayCard = (data, dataLimit) => {
     else{
         document.getElementById("show-btn").classList.add('d-none')
     }
+    // all card
     tool.forEach(singleTool => {
-        const features = singleTool.features;
         // console.log(features)
+        const features = singleTool.features;
+        const featureList = features.map(feature => `<li>${feature}</li>`).join('');
         const newContainer = document.createElement("div");
         newContainer.classList.add('col-lg-4', 'col-sm-12', 'col-md-6');
         newContainer.innerHTML = `
@@ -92,10 +95,8 @@ const displayCard = (data, dataLimit) => {
                 <img src="${singleTool.image}" width="full" height="200" class="card-img-top" alt="Image or banner not found!">
                 <div class="card-body p-0 pt-2">
                     <h5 class="card-title">Features</h5>
-                <ol>
-                    <li>${features[0]}</li>
-                    <li>${features[1]}</li>
-                    <li>${features[2] ? features[0] : 'Empty data found...!'}</li>
+                <ol id="feature-ol">
+                    ${featureList}
                 </ol>
                 </div>
                 <hr>
@@ -127,12 +128,14 @@ const loadDetails = id =>{
 const displayDetails = details =>{
     // declare pricing
     const price = details.pricing;
-
     // access features property from objects
     const features = details.features;
+    // console.log(features)
+    const featureList = Object.keys(features).map(key => `<li>${features[key].feature_name}</li>`).join('');
     // acces integrations property from array
     const integrations = details.integrations;
-
+    const integrationsList = integrations.map(integer => `<li>${integer}</li>`).join('');
+    // modal details below
     const {description, image_link, accuracy, input_output_examples} = details;
     const modalContainer = document.getElementById('load-modal')
     modalContainer.innerHTML = `
@@ -153,22 +156,18 @@ const displayDetails = details =>{
             <div class="row">
                 <div class="col-6">
                     <h3>Features</h3>
-                    <li>${features["1"].feature_name}</li>
-                    <li>${features["2"].feature_name}</li>
-                    <li>${features["3"].feature_name}</li>
+                    <ol>${featureList}</ol>
                 </div>
                 <div class="col-6">
                     <h3>Integrations</h3>
-                    <li>${integrations[0]}</li>
-                    <li>${integrations[1] ? integrations[2] : 'Empty Data...!'}</li>
-                    <li>${integrations[2] ? integrations[0] : 'Empty Data...!'}</li>
+                    <ol>${integrationsList}</ol>
                 </div>
             </div>
         </div>
         <div class="col-lg-6">
             <div class="card p-2">
                 <img src="${image_link[0]}" class="card-img-top position-relative" alt="Images not found!!">
-                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy.score ? accuracy.score : 'No Data'}% accuracy</h3>
+                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy.score ? `${accuracy.score}% accuracy` : ''}</h3>
                 <hr>
                 <div class="card-body text-center">
                     <h2>${input_output_examples[0].input}</h2>
