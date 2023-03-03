@@ -7,11 +7,75 @@ const loadAllData = dataLimit =>{
 }
 // display api data with content card
 const displayCard = (data, dataLimit) => {
-    // console.log(data.tools)
+    
     const container = document.getElementById("card-container");
     container.textContent = '';
     let tool = data.tools;
-
+    // ----------------------------------------------------------
+    const sortData = data => {
+        const sortContainer = document.getElementById("sort-area");
+      
+        // Create a unique date
+        const dates = new Set(data.map(item => item.published_in));
+      
+        // button for all separate date
+        dates.forEach(date => {
+          const button = document.createElement("button");
+          button.classList.add("dropdown-item");
+          button.textContent = date;
+      
+          button.addEventListener("click", () => {
+            // find item by date with filtering
+            const filteredData = data.filter(item => item.published_in === date);
+      
+            const cardContainer = document.getElementById("card-container");
+            cardContainer.textContent = "";
+      
+            filteredData.forEach(item => {
+              const features = item.features;
+              const singleCard = document.createElement('div');
+              singleCard.classList.add('col-lg-4', 'col-sm-12', 'col-md-6');
+              singleCard.innerHTML = `
+                <div class="card p-4">
+                        <img src="${item.image}" width="full" height="200" class="card-img-top" alt="Image or banner not found!">
+                        <div class="card-body p-0 pt-2">
+                            <h5 class="card-title">Features</h5>
+                        <ol>
+                            <li>${features[0]}</li>
+                            <li>${features[1]}</li>
+                            <li>${features[2]}</li>
+                        </ol>
+                        </div>
+                        <hr>
+                        <div class="card-body d-flex align-items-center justify-content-between">
+                            <div>
+                                <h4>${item.name}</h4>
+                                <p><i class="fa-solid fa-calendar-days"></i>${item.published_in}</p>
+                            </div>
+                            <div>
+                                <a href="#" onclick="loadDetails(${item.id})" class="card-link bg-primary text-white py-2 px-3 rounded" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-solid fa-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+              `;
+            //   append here child card
+              cardContainer.appendChild(singleCard)
+            });
+          });
+        //   all card add to container
+          sortContainer.appendChild(button);
+        });
+      };
+      
+      document.getElementById("sort-button").addEventListener("click", () => {
+        const cardContainer = document.getElementById("card-container");
+        cardContainer.innerHTML = "";
+      });
+      
+      sortData(tool);
+      
+    // --------------------------------------------------------------------------------------
+    // by default 6 card
     if(dataLimit && tool.length > 6){
         tool = tool.slice(0, 6);
     }
