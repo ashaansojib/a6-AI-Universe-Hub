@@ -166,7 +166,7 @@ const displayDetails = details => {
         <div class="col-lg-6">
             <div class="card p-2">
                 <img src="${image_link[0]}" class="card-img-top position-relative" alt="Images not found!!">
-                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy ? `${accuracy}% accuracy` : ''}</h3>
+                <h3 class="position-absolute start-50 end-0 p-2 badge rounded-pill bg-danger">${accuracy * 100 ? `${accuracy * 100}% accuracy` : ''}</h3>
                 <hr>
                 <div class="card-body text-center">
                     <h2>${details?.input_output_examples ? details?.input_output_examples[0]?.input : ''}</h2>
